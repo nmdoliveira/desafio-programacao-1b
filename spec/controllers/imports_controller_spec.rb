@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ImportsController do
   describe "POST create" do
     let(:file) { "file" }
-    let(:form) { double :form, content: "content" }
+    let(:form) { double :form, content: "data" }
 
     before do
       allow(ImportForm).to receive(:new).with(file: file).and_return(form)
@@ -15,7 +15,7 @@ RSpec.describe ImportsController do
       end
 
       it "imports orders and redirects to orders apge" do
-        expect(ImportOrders).to receive(:call).with(content: "content")
+        expect(ImportOrders).to receive(:call).with(data: "data")
 
         post :create, import_form: { file: file }
 

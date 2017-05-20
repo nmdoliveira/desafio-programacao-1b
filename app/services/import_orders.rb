@@ -1,39 +1,33 @@
+require "csv"
+
 class ImportOrders
   COLUMNS = %i[client description unit_price amount address supplier].freeze
 
-  attr_reader :content
+  attr_reader :data
 
-  def self.call(content:)
-    new(content: content).call
+  CSV::Converters[:price] = lambda do |str|
+    str =~ /^\d+\.\d+$/ ? (str.to_f * 100).to_i : str
   end
 
-  def initialize(content:)
-    @content = content.force_encoding("utf-8")
+  def self.call(data:)
+    new(data: data).call
+  end
+
+  def initialize(data:)
+    @data = data.force_encoding("utf-8")
   end
 
   def call
-    Order.create!(data)
+    Order.create! rows
   end
 
   private
 
-  def data
-    content.lines.drop(1).map { |line| parse line }
+  def rows
+    values.drop(1).map { |values| COLUMNS.zip(values).to_h }
   end
 
-  def parse(line)
-    values(line).tap do |hash|
-      hash[:unit_price] = parse_price(hash[:unit_price])
-      hash[:amount] = hash[:amount].to_i
-    end
-  end
-
-  def values(line)
-    COLUMNS.zip(line.chomp.split("\t").map(&:squish)).to_h
-  end
-
-  def parse_price(string)
-    price, cents = string.split(".").map(&:to_i)
-    price * 100 + cents
+  def values
+    CSV.parse data, row_sep: "\n", col_sep: "\t", converters: %i[integer price]
   end
 end

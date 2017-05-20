@@ -3,7 +3,7 @@ class ImportsController < ApplicationController
 
   def create
     if import_form.valid?
-      ImportOrders.call(content: import_form.content)
+      ImportOrders.call(data: import_form.content)
       redirect_to orders_path
     else
       render :new
