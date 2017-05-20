@@ -26,6 +26,7 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'bin/**/*'
+    - 'db/schema.rb'
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
   # Cop names are not displayed in offense messages by default. Change behavior
@@ -189,7 +190,7 @@ Style/AlignParameters:
   #
   #     method_call(a,
   #       b)
-  EnforcedStyle: with_first_parameter
+  EnforcedStyle: with_fixed_indentation
   SupportedStyles:
     - with_first_parameter
     - with_fixed_indentation
