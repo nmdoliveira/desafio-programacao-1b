@@ -1,0 +1,5 @@
+h1 Importar vendas
+
+= simple_form_for import_form, method: :post, url: imports_path do |form|
+  = form.input :file, as: :file
+  = form.submit "Fazer upload"

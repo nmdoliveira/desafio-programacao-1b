@@ -106,6 +106,7 @@ Style/Alias:
 
 # Align the elements of a hash literal if they span more than one line.
 Style/AlignHash:
+  Enabled: false
   # Alignment of entries using hash rocket as separator. Valid values are:
   #
   # key - left alignment of keys

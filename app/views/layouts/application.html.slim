@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Vendas
+    = stylesheet_link_tag "application", media: "all"
+    = yield :stylesheet
+    = csrf_meta_tags
+
+  body
+    = yield
+
+    = javascript_include_tag "application"
+    = yield :javascript
