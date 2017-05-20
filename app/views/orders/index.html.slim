@@ -1,18 +1,20 @@
-table
-  thead
-    tr
-      th Comprador
-      th Descrição
-      th Preço unitário
-      th Quantidade
-      th Endereço
-      th Fornecedor
-  tbody
-    - orders.each do |order|
-      tr
-        td = order.client
-        td = order.description
-        td = order.unit_price
-        td = order.amount
-        td = order.address
-        td = order.supplier
+section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    table.mdl-data-table.mdl-js-data-table
+      thead
+        tr
+          th.mdl-data-table__cell--non-numeric Comprador
+          th.mdl-data-table__cell--non-numeric Descrição
+          th Preço unitário
+          th Quantidade
+          th.mdl-data-table__cell--non-numeric Endereço
+          th.mdl-data-table__cell--non-numeric Fornecedor
+      tbody
+        - orders.each do |order|
+          tr
+            td.mdl-data-table__cell--non-numeric = order.client
+            td.mdl-data-table__cell--non-numeric = order.description
+            td = order.unit_price
+            td = order.amount
+            td.mdl-data-table__cell--non-numeric = order.address
+            td.mdl-data-table__cell--non-numeric = order.supplier

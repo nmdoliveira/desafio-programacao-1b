@@ -8,6 +8,7 @@ gem "jquery-rails"
 gem "sass-rails"
 gem "simple_form"
 gem "slim-rails"
+gem "material_design_lite-sass"
 
 group :test do
   gem "rspec-rails"

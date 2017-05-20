@@ -1,0 +1,20 @@
+@import "material";
+
+.mdl-layout__header-row {
+  padding-left: 40px;
+}
+
+section.section--center {
+  max-width: 860px;
+}
+
+.mdl-card {
+  min-height: 0;
+  margin: auto;
+
+  .mdl-data-table {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+}

@@ -6,8 +6,17 @@ html
     = yield :stylesheet
     = csrf_meta_tags
 
-  body
-    = yield
+  body.mdl-color--grey-100.mdl-demo
+    .mdl-layout.mdl-js-layout
+      header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
+        .mdl-layout__header-row
+          span.mdl-layout-title Vendas
+
+      main.mdl-layout__content
+        .page-content
+          .mdl-grid
+            .mdl-cell.mdl-cell--12-col
+              = yield
 
     = javascript_include_tag "application"
     = yield :javascript

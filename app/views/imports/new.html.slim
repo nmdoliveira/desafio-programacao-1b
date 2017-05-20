@@ -1,5 +1,10 @@
-h1 Importar vendas
-
-= simple_form_for import_form, method: :post, url: imports_path do |form|
-  = form.input :file, as: :file
-  = form.submit "Fazer upload"
+section
+  .mdl-card.mdl-shadow--2dp
+    .mdl-card__title
+      h2.mdl-card__title-text Selecionar arquivo
+    .mdl-card__supporting-text
+      | Selecione um arquivo para importar novas vendas para o banco de dados.
+    .mdl-card__actions.mdl-card--border
+      = simple_form_for import_form, method: :post, url: imports_path do |form|
+        = form.input :file, as: :file, label: false
+        = form.submit "Fazer upload", class: "mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect"
