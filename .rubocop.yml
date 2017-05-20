@@ -1260,6 +1260,7 @@ Metrics/AbcSize:
   Max: 15
 
 Metrics/BlockLength:
+  Enabled: false
   CountComments: false  # count full line comments?
   Max: 25
   ExcludedMethods: []

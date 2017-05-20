@@ -17,3 +17,7 @@ end
 group :development do
   gem "rubocop"
 end
+
+group :development, :test do
+  gem "byebug"
+end

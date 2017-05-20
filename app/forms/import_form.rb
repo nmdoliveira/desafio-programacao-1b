@@ -6,9 +6,7 @@ class ImportForm
 
   validates :file, :content, presence: true
 
-  private
-
   def content
-    file.read if file.present?
+    @content ||= file.present? && file.read
   end
 end

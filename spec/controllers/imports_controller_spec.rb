@@ -3,18 +3,23 @@ require "rails_helper"
 RSpec.describe ImportsController do
   describe "POST create" do
     let(:file) { "file" }
-    let(:form) { double :form }
+    let(:form) { double :form, content: "content" }
 
     before do
       allow(ImportForm).to receive(:new).with(file: file).and_return(form)
     end
 
     context "when parameters are valid" do
-      before { allow(form).to receive(:valid?).and_return(true) }
+      before do
+        allow(form).to receive(:valid?).and_return(true)
+      end
 
-      it do
+      it "imports orders and redirects to orders apge" do
+        expect(ImportOrders).to receive(:call).with(content: "content")
+
         post :create, import_form: { file: file }
-        expect(response.body).to eq "Arquivo válido"
+
+        expect(response).to redirect_to "/orders"
       end
     end
 
@@ -23,7 +28,7 @@ RSpec.describe ImportsController do
 
       it do
         post :create, import_form: { file: file }
-        expect(response.body).to eq "Arquivo inválido"
+        expect(response.body).to render_template :new
       end
     end
   end

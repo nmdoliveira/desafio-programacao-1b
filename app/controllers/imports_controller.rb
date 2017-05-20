@@ -3,9 +3,10 @@ class ImportsController < ApplicationController
 
   def create
     if import_form.valid?
-      render text: "Arquivo válido"
+      ImportOrders.call(content: import_form.content)
+      redirect_to orders_path
     else
-      render text: "Arquivo inválido"
+      render :new
     end
   end
 

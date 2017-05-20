@@ -1,0 +1,18 @@
+table
+  thead
+    tr
+      th Comprador
+      th Descrição
+      th Preço unitário
+      th Quantidade
+      th Endereço
+      th Fornecedor
+  tbody
+    - orders.each do |order|
+      tr
+        td = order.client
+        td = order.description
+        td = order.unit_price
+        td = order.amount
+        td = order.address
+        td = order.supplier
