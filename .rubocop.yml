@@ -942,10 +942,10 @@ Style/PercentLiteralDelimiters:
   # an individual key
   PreferredDelimiters:
     default: ()
-    '%i': '[]'
+    '%i': '()'
     '%I': '[]'
     '%r': '{}'
-    '%w': '[]'
+    '%w': '()'
     '%W': '[]'
 
 Style/PercentQLiterals:
@@ -1509,4 +1509,5 @@ Rails/Validation:
     - app/models/**/*.rb
 
 Bundler/OrderedGems:
+  Enabled: false
   TreatCommentsAsGroupSeparators: true

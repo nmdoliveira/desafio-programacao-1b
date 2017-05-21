@@ -9,10 +9,14 @@ gem "sass-rails"
 gem "simple_form"
 gem "slim-rails"
 gem "material_design_lite-sass"
+gem "draper"
 
 group :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
+  gem "simplecov"
+  gem "factory_girl_rails"
+  gem "faker"
 end
 
 group :development do

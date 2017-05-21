@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :imports, only: %i[new create]
-  resources :orders, only: :index
+  resources :imports, only: %i(index create)
 
-  root "imports#new"
+  root "imports#index"
 end

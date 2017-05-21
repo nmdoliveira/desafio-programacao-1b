@@ -1,0 +1,7 @@
+= content_for :header
+  = simple_form_for import_form, method: :post, url: imports_path do |form|
+    label
+      #file_upload_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+        i.material-icons file_upload
+      .mdl-tooltip data-mdl-for="file_upload_button" Importar de arquivo
+      = form.input_field :file, as: :file, label: false, class: "hidden"

@@ -13,7 +13,7 @@ module DesafioProgramacao1b
   class Application < Rails::Application
     config.time_zone = "Brasilia"
 
-    config.i18n.available_locales = [:"pt-BR"]
+    config.i18n.available_locales = %i(pt-BR en)
     config.i18n.default_locale = :"pt-BR"
 
     config.active_record.raise_in_transactional_callbacks = true

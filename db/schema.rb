@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520160803) do
+ActiveRecord::Schema.define(version: 20170520230022) do
+
+  create_table "imports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_imports", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "import_id"
+  end
+
+  add_index "order_imports", ["import_id"], name: "index_order_imports_on_import_id"
+  add_index "order_imports", ["order_id"], name: "index_order_imports_on_order_id"
 
   create_table "orders", force: :cascade do |t|
     t.string   "client"

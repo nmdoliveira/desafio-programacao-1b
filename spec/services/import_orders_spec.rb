@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe ImportOrders do
-  describe "#call" do
+  describe ".call" do
+    let(:import) { double :import }
+    let(:orders) { double :orders }
+
     let(:data) { File.read Rails.root.join("spec/support/files/dados.txt") }
     let(:parsed) do
       [
@@ -40,11 +43,12 @@ RSpec.describe ImportOrders do
       ]
     end
 
-    subject { described_class.new(data: data) }
-
     it "creates orders" do
-      expect(Order).to receive(:create!).with(parsed)
-      subject.call
+      expect(Import).to receive(:create!).and_return(import)
+      expect(Order).to receive(:create!).with(parsed).and_return(orders)
+      expect(import).to receive_message_chain(:orders, :<<).with(orders)
+
+      described_class.call(data: data)
     end
   end
 end

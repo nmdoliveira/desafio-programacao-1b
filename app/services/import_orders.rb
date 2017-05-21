@@ -1,7 +1,7 @@
 require "csv"
 
 class ImportOrders
-  COLUMNS = %i[client description unit_price amount address supplier].freeze
+  COLUMNS = %i(client description unit_price amount address supplier).freeze
 
   attr_reader :data
 
@@ -18,16 +18,24 @@ class ImportOrders
   end
 
   def call
-    Order.create! rows
+    import.orders << orders
   end
 
   private
+
+  def import
+    @import ||= Import.create!
+  end
+
+  def orders
+    Order.create! rows
+  end
 
   def rows
     values.drop(1).map { |values| COLUMNS.zip(values).to_h }
   end
 
   def values
-    CSV.parse data, row_sep: "\n", col_sep: "\t", converters: %i[integer price]
+    CSV.parse data, row_sep: "\n", col_sep: "\t", converters: %i(integer price)
   end
 end

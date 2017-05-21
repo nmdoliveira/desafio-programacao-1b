@@ -1,0 +1,10 @@
+pt-BR:
+  activemodel:
+    attributes:
+      sign_in_form:
+        email: E-mail
+        password: Senha
+      user:
+        name: Nome
+        email: E-mail
+        password: Senha

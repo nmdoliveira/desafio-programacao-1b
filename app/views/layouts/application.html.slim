@@ -11,12 +11,17 @@ html
       header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
         .mdl-layout__header-row
           span.mdl-layout-title Vendas
+          = yield :header
 
       main.mdl-layout__content
         .page-content
           .mdl-grid
             .mdl-cell.mdl-cell--12-col
               = yield
+
+        #snackbar.mdl-js-snackbar.mdl-snackbar
+          .mdl-snackbar__text = flash[:message]
+          button.mdl-snackbar__action type="button"
 
     = javascript_include_tag "application"
     = yield :javascript

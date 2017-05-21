@@ -1,0 +1,15 @@
+.mdl-card {
+  min-height: 0;
+  margin: auto;
+
+  .mdl-card__title {
+    justify-content: space-between;
+  }
+
+  .mdl-data-table {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
