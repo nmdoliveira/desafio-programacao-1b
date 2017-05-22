@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe ImportForm, type: :model do
   it { is_expected.to validate_presence_of :file }
 
@@ -10,7 +8,7 @@ RSpec.describe ImportForm, type: :model do
 
   describe "#error_sentence" do
     before do
-      subject.file = double(:file, read: nil)
+      subject.file = double(:file, read: "")
       subject.validate
     end
 

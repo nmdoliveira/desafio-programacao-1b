@@ -17,8 +17,6 @@
 /tmp
 
 .env
-config/secrets.yml
-config/database.yml
 
 coverage
 spec/examples.txt

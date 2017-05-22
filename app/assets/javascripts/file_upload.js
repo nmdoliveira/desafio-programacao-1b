@@ -1,11 +1,17 @@
 (function() {
-  var form = document.getElementById("new_import_form");
-  var input = document.getElementById("import_form_file");
+  var form = $("#new_import_form");
+  var input = $("#import_form_file");
+  var button = $("#file_upload_button");
+  var progress = $("#import_progress");
 
-  input.addEventListener("change", function() {
-    document.getElementById("snackbar").MaterialSnackbar.showSnackbar({
-      message: "Seu arquivo foi enviado!"
+  input.on("change", function() {
+    $("#snackbar")[0].MaterialSnackbar.showSnackbar({
+      message: "Seu arquivo está sendo processado!",
+      timeout: 2000
     });
-    form.submit();
+    setTimeout(function() { form.submit(); }, 2500);
+
+    button.attr("disabled", "disabled");
+    progress.removeClass("mdl-progress__hide");
   });
 })();

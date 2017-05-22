@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe ImportDecorator do
   let(:import) do
     double :import, total: 2550,

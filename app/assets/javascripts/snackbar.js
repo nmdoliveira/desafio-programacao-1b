@@ -1,7 +1,9 @@
-window.addEventListener("load", function() {
-  var snackbar = document.getElementById("snackbar");
-  var text = snackbar.textContent;
-  if (text) {
-    snackbar.MaterialSnackbar.showSnackbar({ message: text });
-  }
+$(window).on("load", function() {
+  var snackbar = $("#snackbar");
+  var text = snackbar.text();
+
+  if (text)
+    setTimeout(function() {
+      snackbar[0].MaterialSnackbar.showSnackbar({ message: text });
+    });
 });

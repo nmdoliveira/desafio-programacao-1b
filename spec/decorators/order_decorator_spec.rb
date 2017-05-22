@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe OrderDecorator do
   let(:order) { double :order, unit_price: 1999 }
 

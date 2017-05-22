@@ -1,21 +1,27 @@
 class ImportsController < ApplicationController
   helper_method :import_form, :imports
 
+  attr_reader :import
+
   def create
-    if import_form.valid?
-      ImportOrders.call(data: import_form.content)
-      flash.now[:message] = "Arquivo importado com sucesso!"
+    if import_form.valid? && import! && import.success?
+      flash[:message] = "Arquivo importado com sucesso!"
     else
-      flash.now[:message] = "Houve um erro ao processar seu arquivo: #{errors}"
+      flash[:message] = "Houve um erro ao processar seu arquivo: #{errors}"
     end
 
-    render :index
+    redirect_to root_path
   end
 
   private
 
   def errors
-    import_form.error_sentence
+    import.present? ? import.message : import_form.error_sentence
+  end
+
+  def import!
+    @import = Import.create
+    Importer.call(import: import, data: import_form.content)
   end
 
   def imports

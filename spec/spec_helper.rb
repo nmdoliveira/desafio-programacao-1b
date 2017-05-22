@@ -6,7 +6,7 @@ if ENV["COVERAGE"]
       open(source_file.filename).grep(/:nocov:/).any?
     end
 
-    %w(Forms Decorators Services).each do |group|
+    %w(Forms Decorators).each do |group|
       add_group group do |source_file|
         source_file.filename =~ /#{group.downcase}/
       end

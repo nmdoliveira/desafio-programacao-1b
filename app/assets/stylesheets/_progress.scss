@@ -1,0 +1,11 @@
+.mdl-progress {
+  top: 4px;
+
+  &.mdl-progress__full-width {
+    width: 100%;
+  }
+
+  &.mdl-progress__hide {
+    opacity: 0;
+  }
+}

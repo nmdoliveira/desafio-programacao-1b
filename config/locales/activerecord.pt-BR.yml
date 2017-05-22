@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    attributes:
+      order:
+        client: comprador
+        description: descrição
+        unit_price: preço unitário
+        amount: quantidade
+        address: endereço
+        supplier: fornecedor

@@ -8,7 +8,7 @@ class ImportForm
   validate :file_has_content
 
   def content
-    @content ||= file.present? && file.read
+    @content ||= file.present? && file.read.force_encoding("utf-8")
   end
 
   def error_sentence
@@ -18,6 +18,6 @@ class ImportForm
   private
 
   def file_has_content
-    errors.add :file, "o arquivo está vazio"
+    errors.add :file, "o arquivo está vazio" if content.blank?
   end
 end

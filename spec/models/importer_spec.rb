@@ -1,6 +1,4 @@
-require "rails_helper"
-
-RSpec.describe ImportOrders do
+RSpec.describe Importer do
   describe ".call" do
     let(:import) { double :import }
     let(:orders) { double :orders }
@@ -43,12 +41,24 @@ RSpec.describe ImportOrders do
       ]
     end
 
-    it "creates orders" do
-      expect(Import).to receive(:create!).and_return(import)
-      expect(Order).to receive(:create!).with(parsed).and_return(orders)
-      expect(import).to receive_message_chain(:orders, :<<).with(orders)
+    context "when import is succesful" do
+      it "creates orders" do
+        expect(Order).to receive(:create!).with(parsed).and_return(orders)
+        expect(import).to receive_message_chain(:orders, :<<).with(orders)
+        expect(import).to receive(:success!)
 
-      described_class.call(data: data)
+        described_class.call(import: import, data: data)
+      end
+    end
+
+    context "when import fails" do
+      it "saves failure on import" do
+        expect(Order).to receive(:create!).with(parsed).and_raise("msg")
+        allow(import).to receive_message_chain(:orders, :<<)
+        expect(import).to receive(:fail!).with(message: "msg")
+
+        described_class.call(import: import, data: data)
+      end
     end
   end
 end
