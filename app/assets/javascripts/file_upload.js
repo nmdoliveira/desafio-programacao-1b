@@ -7,9 +7,9 @@
   input.on("change", function() {
     $("#snackbar")[0].MaterialSnackbar.showSnackbar({
       message: "Seu arquivo está sendo processado!",
-      timeout: 2000
+      timeout: 1000
     });
-    setTimeout(function() { form.submit(); }, 2500);
+    setTimeout(function() { form.submit(); }, 1500);
 
     button.attr("disabled", "disabled");
     progress.removeClass("mdl-progress__hide");

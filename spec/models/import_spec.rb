@@ -1,8 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Import do
-  it { is_expected.to have_many :order_imports }
-  it { is_expected.to have_many(:orders).through(:order_imports) }
+  it { is_expected.to have_many :orders }
 
   describe "#total" do
     let(:order_1) { build :order, amount: 2, unit_price: 100 }

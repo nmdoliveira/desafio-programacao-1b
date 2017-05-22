@@ -22,7 +22,7 @@ class Importer
   end
 
   def call
-    import.orders << orders
+    import.orders.import! COLUMNS, rows
     import.success!
   rescue => e
     import.fail! message: e.message
@@ -30,11 +30,7 @@ class Importer
 
   private
 
-  def orders
-    Order.create! rows
-  end
-
   def rows
-    CSV.new(data, OPTIONS).map { |row| COLUMNS.zip(row).to_h }.drop(1)
+    CSV.parse(data, OPTIONS).drop(1)
   end
 end

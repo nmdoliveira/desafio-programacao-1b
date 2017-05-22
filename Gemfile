@@ -10,6 +10,7 @@ gem "simple_form"
 gem "slim-rails"
 gem "material_design_lite-sass"
 gem "draper"
+gem "activerecord-import"
 
 group :test do
   gem "rspec-rails"
@@ -17,6 +18,9 @@ group :test do
   gem "simplecov"
   gem "factory_girl_rails"
   gem "faker"
+  gem "capybara"
+  gem "capybara-webkit"
+  gem "database_cleaner"
 end
 
 group :development do

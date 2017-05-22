@@ -1,4 +1,6 @@
 RSpec.describe Order do
+  it { is_expected.to belong_to :import }
+
   it { is_expected.to validate_presence_of :client }
   it { is_expected.to validate_presence_of :description }
   it { is_expected.to validate_presence_of :unit_price }
