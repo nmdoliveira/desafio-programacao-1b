@@ -9,7 +9,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
-module DesafioProgramacao1b
+module Sales
   class Application < Rails::Application
     config.time_zone = "Brasilia"
 
